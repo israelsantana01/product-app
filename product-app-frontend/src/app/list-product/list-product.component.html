@@ -1,18 +1,18 @@
 <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Produto</th>
-        <th scope="col">Código de barras</th>
-        <th scope="col">Preço</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row" ngFor="let product of products; let index - i">{{ index }}</th>
-        <td>{{ product.name }}</td>
-        <td>{{ product.barcode }}</td>
-        <td>{{ product.price }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Produto</th>
+      <th scope="col">Código de barras</th>
+      <th scope="col">Preço</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.id }}</td>
+      <td>{{ product.description }}</td>
+      <td>{{ product.barcode }}</td>
+      <td>{{ product.price | currency }}</td>
+    </tr>
+  </tbody>
+</table>
