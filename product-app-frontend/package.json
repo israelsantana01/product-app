@@ -1,4 +1,11 @@
-{
+{ 
+  "main": "index.js",
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "name": "app",
   "version": "0.0.0",
   "scripts": {
