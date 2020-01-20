@@ -10,6 +10,7 @@
               <th>Barcode</th>
               <th>Description</th>
               <th>Price</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -17,7 +18,14 @@
               <td>{{ product.id }}</td>
               <td>{{ product.barcode }}</td>
               <td>{{ product.description}}</td>
-              <td>${{ product.price }}</td>
+              <td>{{ product.price | currency }}</td>
+              <td>
+                <a class="btn wave-effects deep-purple" [routerLink]="['/products/', product.id]">
+                  <i class="material-icons">
+                    edit
+                  </i>
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>

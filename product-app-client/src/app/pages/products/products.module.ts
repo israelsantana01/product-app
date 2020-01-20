@@ -7,6 +7,14 @@ const routes: Routes = [
   {
     path: '',
     component: ProductsPage
+  },
+  {
+    path: 'new',
+    loadChildren: './product-form/product-from.module#ProductFormModule'
+  },
+  {
+    path: ':id',
+    loadChildren: './product-form/product-from.module#ProductFormModule'
   }
 ];
 
