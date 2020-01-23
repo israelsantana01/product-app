@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ProductsService } from './products.service';
-import { Product } from './products.model';
-import { Subscription } from 'rxjs';
+import { ProductsService } from '../../services/products.service';
+import { Product } from '../../models/products.model';
 
 @Component({
   selector: 'app-products',
@@ -11,24 +9,24 @@ import { Subscription } from 'rxjs';
 })
 
 // tslint:disable-next-line: component-class-suffix
-export class ProductsPage implements OnInit, OnDestroy{
+export class ProductsPage implements OnInit, OnDestroy {
 
   products: Product[];
-  subs: Subscription;
 
   constructor(private productService: ProductsService) { }
 
   ngOnInit() {
-    this.productService.products.subscribe(products =>{
+    this.productService.fetchProducts().subscribe(products => {
       this.products = products;
     });
+  }
 
-    this.productService.fetchProducts().subscribe();
+  deleteProduct(id: number) {
+    this.productService.deleteProduct(id).subscribe(response => {
+      this.products = this.products.filter(product => product.id !== response.id);
+    });
   }
 
   ngOnDestroy() {
-    if (this.subs) {
-      this.subs.unsubscribe();
-    }
   }
 }
