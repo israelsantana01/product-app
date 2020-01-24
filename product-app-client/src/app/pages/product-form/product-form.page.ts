@@ -42,7 +42,7 @@ export class ProductFormPage implements OnInit {
     this.form = new FormGroup({
       barcode: new FormControl(this.product ? this.product.barcode : null, {
         updateOn: 'change',
-        validators: [Validators.required]
+        validators: [Validators.required, Validators.pattern('^(0|[1-9][0-9]*)$'), Validators.minLength(13)]
       }),
       description: new FormControl(this.product ? this.product.description : null, {
         updateOn: 'change',
@@ -50,7 +50,7 @@ export class ProductFormPage implements OnInit {
       }),
       price: new FormControl(this.product ? this.product.price : null, {
         updateOn: 'change',
-        validators: [Validators.required]
+        validators: [Validators.required, Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')]
       }),
     });
   }

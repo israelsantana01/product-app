@@ -3,27 +3,27 @@
     <div *ngIf="form" class="card">
       <div  class="card-content">
         <span class="card-title">{{ editMode ? 'Edit' : 'New' }} Product</span>
-        <form  [formGroup]="form">
+        <form [formGroup]="form">
           <div class="row">
             <div class="input-field col s12">
               <input type="text" id="barcode" formControlName="barcode">
               <label for="barcode" [class.active]="form.get('barcode').value !== null">Barcode</label>
-              <small class="red-text" *ngIf="form.get('barcode').value == null && form.get('barcode').touched " >
-                Invalid Field
+              <small class="red-text" *ngIf="form.get('barcode').invalid && form.get('barcode').touched " >
+                Field is not a valid barcode
               </small>
             </div>
             <div class="input-field col s12">
               <input type="text" id="descrition" formControlName="description">
               <label for="descrition" [class.active]="form.get('description').value !== null">Description</label>
-              <small class="red-text" *ngIf="form.get('description').value == null && form.get('description').touched " >
+              <small class="red-text" *ngIf="form.get('description').invalid && form.get('description').touched " >
                 Invalid Field
               </small>
             </div>
             <div class="input-field col s12">
               <input type="text" id="price" formControlName="price">
               <label for="price" [class.active]="form.get('price').value !== null">Price</label>
-              <small class="red-text" *ngIf="form.get('price').value == null && form.get('price').touched " >
-                Invalid Field
+              <small class="red-text" *ngIf="form.get('price').invalid && form.get('price').touched " >
+                This field is not a valid price
               </small>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../models/products.model';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -11,6 +12,7 @@ import { Product } from '../../models/products.model';
 // tslint:disable-next-line: component-class-suffix
 export class ProductsPage implements OnInit, OnDestroy {
 
+  dtTrigger = new Subject();
   products: Product[];
 
   constructor(private productService: ProductsService) { }
@@ -18,6 +20,7 @@ export class ProductsPage implements OnInit, OnDestroy {
   ngOnInit() {
     this.productService.fetchProducts().subscribe(products => {
       this.products = products;
+      this.dtTrigger.next();
     });
   }
 
@@ -28,5 +31,6 @@ export class ProductsPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.dtTrigger.unsubscribe();
   }
 }
