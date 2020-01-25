@@ -1,7 +1,6 @@
 import { AuthService } from './auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthModule } from './auth.module';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +15,7 @@ export class AuthPage implements OnInit {
 
   form: FormGroup;
 
-  constructor(private authService: AuthModule, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.form = new FormGroup({
