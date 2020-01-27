@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
     route: import('@angular/router').ActivatedRouteSnapshot,
     // tslint:disable-next-line: max-line-length
     state: import('@angular/router').RouterStateSnapshot
-  // tslint:disable-next-line: max-line-length
+    // tslint:disable-next-line: max-line-length
   ): boolean | import('@angular/router').UrlTree | import('rxjs').Observable<boolean | import('@angular/router').UrlTree> | Promise<boolean | import('@angular/router').UrlTree> {
 
       if (this.authService.authenticaded) {

@@ -18,17 +18,23 @@
               <td>{{ product.id }}</td>
               <td>{{ product.barcode }}</td>
               <td>{{ product.description}}</td>
-              <td>{{ product.price | currency }}</td>
+              <td>R$ {{ product.price }}</td>
               <td class="d-flex">
-               <div class="p-1">
-                <a class="btn wave-effects deep-purple" [routerLink]="['/admin', 'products', product.id]">
-                  <i class="material-icons">
-                    edit
-                  </i>
-                </a>
-               </div>
                 <div class="p-1">
-                  <a class="btn wave-effects red darken-1" (click)="deleteProduct(product.id)">
+                  <a
+                    class="btn wave-effects deep-purple"
+                    [routerLink]="['/admin', 'products', product.id]"
+                  >
+                    <i class="material-icons">
+                      edit
+                    </i>
+                  </a>
+                </div>
+                <div class="p-1">
+                  <a
+                    class="btn wave-effects red darken-1"
+                    (click)="deleteProduct(product.id)"
+                  >
                     <i class="material-icons">
                       delete
                     </i>
