@@ -5,19 +5,19 @@ import { User } from 'src/app/models/auth.model';
 
 export class AuthService {
 
-  private mAuthenticaded = false;
+  private mAuthenticated = false;
 
-  get authenticaded() {
-    return this.mAuthenticaded;
+  get authenticated() {
+    return this.mAuthenticated;
   }
 
   login(user: User) {
     if (user.username === 'root' && user.password === 'admin') {
-      this.mAuthenticaded = true;
+      this.mAuthenticated = true;
     }
   }
 
   logout() {
-    this.mAuthenticaded = false;
+    this.mAuthenticated = false;
   }
 }
