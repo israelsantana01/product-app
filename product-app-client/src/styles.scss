@@ -1,18 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-body {
+html, body {
   background: url('assets/img/e-comerce.jpg') center;
-}
-
-.d-flex {
-  display: flex;
-}
-
-.justify-content-flex-end {
-  justify-content: flex-end;
-}
-
-.p-1 {
-  padding: 0.25em;
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .dataTables_length {
@@ -32,3 +23,33 @@ body {
     }
   }
 }
+
+.d-flex {
+  display: flex !important;
+}
+
+.p-2 {
+  padding: .5rem !important;
+}
+
+.flex-row {
+  flex-direction: row !important;
+}
+
+.justify-content-flex-start {
+  justify-content: flex-start !important;
+}
+
+.justify-content-flex-end {
+  justify-content: flex-end !important;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+

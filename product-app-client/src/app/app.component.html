@@ -1,5 +1,5 @@
 <body>
-  <nav class="deep-purple lighten-1" role="navigation">
+  <!-- <nav class="deep-purple lighten-1" role="navigation">
     <div class="nav-wrapper container">
       <a id="logo-container" href="#" class="brand-logo">
         <img src="assets/img/shop.svg" height="20px" />
@@ -18,7 +18,38 @@
         ><i class="material-icons">menu</i></a
       >
     </div>
-  </nav>
+  </nav> -->
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <span>iShop</span>
+
+      <div class="d-flex w-100 justify-content-flex-end">
+        <ul class="d-flex">
+          <li>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>person_outline</mat-icon>
+            </button>
+          </li>
+        </ul>
+        <mat-menu #menu>
+          <button mat-menu-item>
+            <mat-icon>exit_to_app</mat-icon>
+            &nbsp; Sair
+          </button>
+        </mat-menu>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-drawer-container>
+    <mat-drawer [mode]="mode">
+
+    </mat-drawer>
+  </mat-drawer-container>
 
   <div class="container">
     <div class="section">
