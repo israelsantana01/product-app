@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'product-app-client';
+  mode = "side";
 
   constructor(public authService: AuthService, private router: Router) {}
 
