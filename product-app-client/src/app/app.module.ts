@@ -5,8 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {  MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule } from '@angular/material';
-import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import {  MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, MatListModule, MatDividerModule } from '@angular/material';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
+
 
 
 
@@ -23,7 +25,9 @@ import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatListModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
