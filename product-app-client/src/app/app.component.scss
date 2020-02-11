@@ -47,7 +47,7 @@ li {
           background-color: #605d65;
           margin-top: -7px;
         }
-        .pf2 {
+        .profile-card-2 {
           display: flex;
           justify-content: center;
           margin-bottom: 1px;
@@ -67,9 +67,6 @@ li {
           }
         }
       }
-    }
-    mat-drawer-content {
-      background-image: url(../assets/img/e-comerce.jpg);
     }
   }
 }
