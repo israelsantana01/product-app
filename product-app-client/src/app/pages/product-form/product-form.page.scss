@@ -1,1 +1,36 @@
+.page-header {
+  background-image: url(../../../assets/img/e-comerce.jpg);
+  background-position: center;
+}
+mat-card {
+  .form-style {
+    display: grid;
 
+    .form-group {
+      position: relative;
+      margin-bottom: 25px;
+      overflow: hidden;
+      padding: 0 1.6em;
+      background-color: white;
+      align-items: center;
+
+
+      .input-form {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #999;
+        padding: 13px 38px;
+        font-family: sans-serif;
+        font-size: 18px;
+        box-sizing: border-box;
+        outline: none;
+        padding-left: 14px;
+      }
+      .input-form:focus {
+        border-bottom: 1px solid #555;
+      }
+
+
+    }
+  }
+}

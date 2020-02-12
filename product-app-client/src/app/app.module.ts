@@ -5,8 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {  MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, MatListModule, MatDividerModule } from '@angular/material';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { SharedModule } from './shared.module';
 
 
 
@@ -21,13 +20,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatSidenavModule,
-    MatListModule,
-    MatDividerModule
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

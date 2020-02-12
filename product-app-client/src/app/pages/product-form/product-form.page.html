@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col offset-l2 s12 m12 l8">
     <div *ngIf="form" class="card">
       <div  class="card-content">
@@ -39,4 +39,46 @@
       </div>
     </div>
   </div>
+</div> -->
+<div class="page-header">
+
+</div>
+<div class="page-content">
+  <mat-card>
+    <mat-card-header>
+      <h1>{{ editMode ? 'Edit' : 'New' }} Product</h1>
+    </mat-card-header>
+    <form [formGroup]="form">
+      <div class="d-flex flex-column form-style">
+        <div class="form-group d-flex">
+          <label for="description">
+            <mat-icon class="form-icon">shopping_cart</mat-icon>
+          </label>
+          <input class="input-form" type="text" id="description" placeholder="Description">
+        </div>
+        <div class="form-group d-flex">
+          <label for="barcode">
+            <mat-icon>view_headline</mat-icon>
+          </label>
+          <input class="input-form" type="text" id="barcode" placeholder="Barcode">
+        </div>
+        <div class="form-group d-flex">
+          <label for="price">
+            <mat-icon>attach_money</mat-icon>
+          </label>
+          <input class="input-form" type="text" id="price" placeholder="Price">
+        </div>
+      </div>
+    </form>
+    <mat-card-actions>
+      <div class="d-flex justify-content-flex-end">
+        <div class="p-2">
+          <button mat-icon-button>Cancel</button>
+        </div>
+        <div class="p-2">
+          <button mat-icon-button>Add</button>
+        </div>
+      </div>
+    </mat-card-actions>
+  </mat-card>
 </div>

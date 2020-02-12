@@ -23,6 +23,14 @@ li {
   flex-direction: column;
   height: 100%;
 
+  mat-toolbar {
+    background-color: #d61e7e;
+
+    .title {
+      margin-left: 0.5em;
+    }
+  }
+
   mat-drawer-container {
     height: 100%;
 
@@ -38,7 +46,7 @@ li {
           color: white;
         }
         a:hover {
-          background-color: rgba(0, 247, 255, 0.63);
+          background-color: rgba( #d61e7e, 0.63);
         }
         .profile-card {
           text-align: center;

@@ -1,0 +1,67 @@
+<div class="page-header">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+    <div class="title">
+      <h2>Products</h2>
+    </div>
+    <div class="search-wrapper">
+      <mat-icon>search</mat-icon>
+      <input type="text" (keyup)="applyFilter($event)" placeholder="Search">
+    </div>
+    <div class="actions">
+      <button mat-raised-button>Add Product</button>
+    </div>
+  </div>
+</div>
+<div class="page-content">
+  <mat-card>
+    <div class="table-responsive">
+      <table mat-table [dataSource]="dataSource" matSort #sort="matSort">
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+          <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+        </ng-container>
+
+        <!-- Description Column -->
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+          <td mat-cell *matCellDef="let row">{{ row.description }}</td>
+        </ng-container>
+
+        <!-- Price Column -->
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+          <td mat-cell *matCellDef="let row">R$ {{ row.price }}</td>
+        </ng-container>
+
+        <!-- Barcode Column -->
+        <ng-container matColumnDef="barcode">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Barcode</th>
+          <td mat-cell *matCellDef="let row">{{ row.barcode }}</td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+          <td mat-cell *matCellDef="let row">
+            <div class="d-flex justify-content-flex-start">
+              <div class="p-2">
+                <button mat-icon-button (click)="deleteProduct(row.id)">
+                  <mat-icon class="trash">delete</mat-icon>
+                </button>
+              </div>
+              <div class="p-2">
+                <button mat-icon-button [routerLink]="['/admin', 'products', row.id]">
+                  <mat-icon class="edit">edit</mat-icon>
+                </button>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator #paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+    </div>
+  </mat-card>
+</div>
