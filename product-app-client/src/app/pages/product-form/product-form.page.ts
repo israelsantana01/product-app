@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Product } from '../../models/products.model';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/';
 
 @Component({
   selector: 'app-product-form',
@@ -20,7 +21,8 @@ export class ProductFormPage implements OnInit {
   constructor(
     private productService: ProductsService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -42,7 +44,7 @@ export class ProductFormPage implements OnInit {
     this.form = new FormGroup({
       barcode: new FormControl(this.product ? this.product.barcode : null, {
         updateOn: 'change',
-        validators: [Validators.required, Validators.pattern('^(0|[1-9][0-9]*)$'), Validators.minLength(13)]
+        validators: [Validators.required, Validators.pattern('^(0|[0-9][0-9]*)$'), Validators.minLength(13)]
       }),
       description: new FormControl(this.product ? this.product.description : null, {
         updateOn: 'change',
@@ -65,9 +67,21 @@ export class ProductFormPage implements OnInit {
       ...this.form.value
     };
 
-    this.productService.addProduct(value).subscribe(() => {
+    this.productService.addProduct(value).subscribe(product => {
       this.router.navigate(['/admin', 'products']);
+
+      this.openSnackBar('Added successfully', 'Undo', product);
     });
+  }
+
+
+  openSnackBar(message: string, action: string, product: Product) {
+    const snackBarRef = this.snackBar.open(message, action, { duration: 8000 });
+
+    snackBarRef.onAction().subscribe(() => {
+      this.productService.deleteProduct(product.id).subscribe();
+    });
+
   }
 
 }

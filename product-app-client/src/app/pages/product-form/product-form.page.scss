@@ -12,7 +12,6 @@ mat-card {
       overflow: hidden;
       padding: 0 1.6em;
       background-color: white;
-      align-items: center;
 
 
       .input-form {
@@ -30,7 +29,27 @@ mat-card {
         border-bottom: 1px solid #555;
       }
 
-
+      small {
+        color: red;
+        padding-left: 26px;
+      }
     }
   }
+
+  .cancel-button {
+    background-color:#ff0000e3;
+    color: white;
+  }
+
+  .add-button {
+    background-color: #008000e3;
+    color: white;
+  }
+
+  .save-button {
+    background-color: #1badbc;
+    color: white;
+  }
+
+
 }
