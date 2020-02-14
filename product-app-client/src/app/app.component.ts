@@ -19,7 +19,6 @@ export class AppComponent {
     this.sidebarOpen = false;
     this.router.navigate(['/auth']);
 
-
   }
 
   toggleSidebar() {

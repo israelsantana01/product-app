@@ -30,7 +30,7 @@
 </mat-toolbar>
 
 <mat-drawer-container>
-  <mat-drawer [mode]="mode" [opened]="sidebarOpen">
+  <mat-drawer *ngIf="authService.authenticated"  [mode]="mode" [opened]="sidebarOpen">
     <mat-nav-list id="card-top">
       <div class="profile-card">
 

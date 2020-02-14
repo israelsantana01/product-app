@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col s12 m6 offset-m3" >
     <div *ngIf="form" class="card">
       <div class="card-image">
@@ -32,4 +32,23 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+<mat-card>
+  <form [formGroup]="form">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" formControlName="username">
+      <small class="text-danger" *ngIf="form.get('username').invalid && form.get('username').touched ">
+        This field is required
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password">
+      <small class="text-danger" *ngIf="form.get('password').invalid && form.get('password').touched ">
+        This field is required
+      </small>
+    </div>
+    <button mat-button>Login</button>
+  </form>
+</mat-card>
