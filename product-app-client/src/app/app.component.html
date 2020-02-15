@@ -1,6 +1,6 @@
-<mat-toolbar color="primary">
+<mat-toolbar *ngIf="authService.authenticated; else elseBlock" color="primary">
   <mat-toolbar-row>
-    <div *ngIf="authService.authenticated; else elseBlock">
+    <div>
       <button mat-icon-button (click)="toggleSidebar()">
         <mat-icon>menu</mat-icon>
       </button>
@@ -53,7 +53,7 @@
     </mat-nav-list>
   </mat-drawer>
 
-  <mat-drawer-content>
+  <mat-drawer-content class="background">
     <router-outlet></router-outlet>
   </mat-drawer-content>
 

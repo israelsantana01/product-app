@@ -15,6 +15,7 @@ export class AuthPage implements OnInit {
 
   form: FormGroup;
 
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {

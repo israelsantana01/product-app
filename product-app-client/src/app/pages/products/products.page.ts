@@ -34,7 +34,7 @@ export class ProductsPage implements OnInit, OnDestroy {
     this.dataSource.sort = this.sort;
     this.subscription = this.productsService.products.subscribe(products => {
       this.dataSource.data = products;
-      console.log(products);
+
     });
 
     this.productsService.fetchProducts().subscribe();
