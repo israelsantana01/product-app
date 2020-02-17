@@ -54,6 +54,10 @@ export class ProductFormPage implements OnInit {
         updateOn: 'change',
         validators: [Validators.required, Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')]
       }),
+      image: new FormControl(null, {
+        updateOn: 'change',
+        validators: this.product ? [] : []
+      })
     });
   }
 
@@ -76,7 +80,7 @@ export class ProductFormPage implements OnInit {
 
 
   openSnackBar(message: string, action: string, product: Product) {
-    const snackBarRef = this.snackBar.open(message, action, { duration: 8000 });
+    const snackBarRef = this.snackBar.open(message, action, { duration: 4000 });
 
     snackBarRef.onAction().subscribe(() => {
       this.productService.deleteProduct(product.id).subscribe();

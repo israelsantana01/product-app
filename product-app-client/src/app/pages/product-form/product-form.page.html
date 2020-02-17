@@ -40,9 +40,7 @@
     </div>
   </div>
 </div> -->
-<div class="page-header">
 
-</div>
 <div class="page-content">
   <mat-card *ngIf="form">
     <mat-card-header>
@@ -75,6 +73,12 @@
               <mat-icon>attach_money</mat-icon>
             </label>
             <input class="input-form" type="text" id="price" placeholder="Price" formControlName="price">
+          </div>
+          <small *ngIf="form.get('price').invalid && form.get('price').touched">Invalid Field</small>
+        </div>
+        <div class="form-group">
+          <div class="d-flex align-items-center">
+            <input class="input-form" type="file" id="image" placeholder="image" formControlName="image">
           </div>
           <small *ngIf="form.get('price').invalid && form.get('price').touched">Invalid Field</small>
         </div>

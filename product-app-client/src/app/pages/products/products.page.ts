@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../models/products.model';
@@ -24,7 +25,8 @@ export class ProductsPage implements OnInit, OnDestroy {
   products: Product[];
 
   constructor(
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    public authService: AuthService
   ) { }
 
 
