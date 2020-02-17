@@ -40,7 +40,9 @@
     </div>
   </div>
 </div> -->
+<div class="page-header">
 
+</div>
 <div class="page-content">
   <mat-card *ngIf="form">
     <mat-card-header>
@@ -78,7 +80,7 @@
         </div>
         <div class="form-group">
           <div class="d-flex align-items-center">
-            <input class="input-form" type="file" id="image" placeholder="image" formControlName="image">
+            <input class="input-form" (change)="onFileChanged($event)" type="file" id="image" placeholder="image" formControlName="image">
           </div>
           <small *ngIf="form.get('price').invalid && form.get('price').touched">Invalid Field</small>
         </div>
@@ -92,13 +94,13 @@
           </button>
         </div>
         <div class="p-2" *ngIf="editMode; else elseBlock">
-          <button mat-strocked-button class="save-button" (click)="submit()" [disabled]="form.invalid" mat-button>
+          <button mat-strocked-button class="save-button" [class.invalidSaveChanges]="form.invalid" (click)="submit()" [disabled]="form.invalid" mat-button>
             <mat-icon>save</mat-icon>&nbsp; Save Changes
           </button>
         </div>
         <ng-template #elseBlock>
           <div class="p-2">
-            <button  class="add-button" (click)="submit()" [disabled]="form.invalid" mat-button>
+            <button  class="add-button" [class.invalidAdd]="form.invalid" (click)="submit()" [disabled]="form.invalid" mat-button>
               <mat-icon>add</mat-icon>&nbsp; Add
             </button>
           </div>

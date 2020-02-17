@@ -17,6 +17,7 @@ export class ProductFormPage implements OnInit {
   form: FormGroup;
   editMode = false;
   product: Product;
+  selectedImage: File;
 
   constructor(
     private productService: ProductsService,
@@ -56,9 +57,13 @@ export class ProductFormPage implements OnInit {
       }),
       image: new FormControl(null, {
         updateOn: 'change',
-        validators: this.product ? [] : []
+        validators: this.product ? [] : [Validators.required]
       })
     });
+  }
+
+  onFileChanged(event: Event) {
+    this.selectedImage = (event.target as HTMLInputElement).files[0];
   }
 
   submit() {
@@ -66,16 +71,18 @@ export class ProductFormPage implements OnInit {
       return;
     }
 
-    const value: Product = {
-      id: this.product ? this.product.id : null,
-      ...this.form.value
-    };
+    // const value: Product = {
+    //   id: this.product ? this.product.id : null,
+    //   ...this.form.value
+    // };
 
-    this.productService.addProduct(value).subscribe(product => {
-      this.router.navigate(['/admin', 'products']);
+    // this.productService.addProduct(value).subscribe(product => {
+    //   this.router.navigate(['/admin', 'products']);
 
-      this.openSnackBar('Added successfully', 'Undo', product);
-    });
+    //   this.openSnackBar('Added successfully', 'Undo', product);
+    // });
+    console.log(this.form.value);
+    console.log(this.selectedImage);
   }
 
 

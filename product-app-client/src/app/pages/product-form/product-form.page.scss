@@ -41,9 +41,17 @@ mat-card {
     color: white;
   }
 
+  .invalidSaveChanges {
+    background-color: #605d65;
+  }
+
   .add-button {
     background-color: #008000e3;
     color: white;
+  }
+
+  .invalidAdd {
+    background-color: #605d65;
   }
 
   .save-button {

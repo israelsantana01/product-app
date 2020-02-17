@@ -34,7 +34,12 @@
   </div>
 </div> -->
 <mat-card *ngIf="form">
-  <h2>Sign In</h2>
+  <div class="login-header">
+    <div class="icon-wrapper">
+      <mat-icon>person</mat-icon>
+    </div>
+    <h2>Sign In</h2>
+  </div>
   <form [formGroup]="form">
     <div class="form-group">
       <label for="username">Username</label>
