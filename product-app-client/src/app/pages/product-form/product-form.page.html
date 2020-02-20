@@ -84,6 +84,9 @@
           </div>
           <small *ngIf="form.get('price').invalid && form.get('price').touched">Invalid Field</small>
         </div>
+        <div class="form-group">
+          <img [src]="'http://localhost:8080/images/' + product.imageUrl" alt="Product Image">
+        </div>
       </div>
     </form>
     <mat-card-actions>
