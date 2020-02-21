@@ -1,101 +1,60 @@
-<body>
-  <!-- <nav class="deep-purple lighten-1" role="navigation">
-    <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo">
-        <img src="assets/img/shop.svg" height="20px" />
-        iShop
-      </a>
-      <ul class="right hide-on-med-and-down">
-        <li><a  *ngIf="authService.authenticated" routerLink="/admin/products/new">New Product</a></li>
-        <li><a *ngIf="authService.authenticated" (click)="logout()">Logout</a></li>
-      </ul>
-
-      <ul id="nav-mobile" class="sidenav">
-        <li><a  *ngIf="authService.authenticated" routerLink="/admin/products/new">New Product</a></li>
-        <li><a  *ngIf="authService.authenticated" (click)="logout()">Logout</a></li>
-      </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"
-        ><i class="material-icons">menu</i></a
-      >
-    </div>
-  </nav> -->
-  <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <button mat-icon-button>
+<mat-toolbar *ngIf="authService.authenticated; else elseBlock" color="primary">
+  <mat-toolbar-row>
+    <div>
+      <button mat-icon-button (click)="toggleSidebar()">
         <mat-icon>menu</mat-icon>
       </button>
+    </div>
+    <ng-template #elseBlock>
+      <img src="../assets/img/shop.svg" alt="logo.svg" height="40px">
+    </ng-template>
 
-      <span>iShop</span>
+    <span class="title">iShop</span>
 
-      <div class="d-flex w-100 justify-content-flex-end">
-        <ul class="d-flex">
-          <li>
-            <button mat-icon-button [matMenuTriggerFor]="menu">
-              <mat-icon>person_outline</mat-icon>
-            </button>
-          </li>
-        </ul>
-        <mat-menu #menu>
-          <button mat-menu-item>
-            <mat-icon>exit_to_app</mat-icon>
-            &nbsp; Sair
+    <div class="d-flex w-100 justify-content-flex-end" *ngIf="authService.authenticated">
+      <ul class="d-flex">
+        <li>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>person_outline</mat-icon>
           </button>
-        </mat-menu>
-      </div>
-    </mat-toolbar-row>
-  </mat-toolbar>
-
-  <mat-drawer-container>
-    <mat-drawer [mode]="mode">
-
-    </mat-drawer>
-  </mat-drawer-container>
-
-  <div class="container">
-    <div class="section">
-      <router-outlet></router-outlet>
+        </li>
+      </ul>
+      <mat-menu #menu>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          &nbsp; Sair
+        </button>
+      </mat-menu>
     </div>
-    <br /><br />
-  </div>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-  <footer class="page-footer red">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Product App</h5>
-          <p class="grey-text text-lighten-4">
-            We are a team of college students working on this project like it's
-            our full time job. Any amount would help support and continue
-            development on this project and is greatly appreciated.
-          </p>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Social Media</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Facebook</a></li>
-            <li><a class="white-text" href="#!">Twitter</a></li>
-            <li><a class="white-text" href="#!">Instagram</a></li>
-            <li><a class="white-text" href="#!">LinkedIn</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Jobs</a></li>
-            <li><a class="white-text" href="#!">Help and Support</a></li>
-            <li><a class="white-text" href="#!">Team</a></li>
-            <li><a class="white-text" href="#!">Location</a></li>
-          </ul>
-        </div>
+<mat-drawer-container>
+  <mat-drawer *ngIf="authService.authenticated"  [mode]="mode" [opened]="sidebarOpen">
+    <mat-nav-list id="card-top">
+      <div class="profile-card">
+
       </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-        Made by
-        <a class="orange-text text-lighten-3" href="http://materializecss.com"
-          >Materialize</a
-        >
+      <div class="profile-card-2">
+        <div class="header">
+          <img src="../assets/img/shop.svg" alt="logo.svg">
+        </div>
+
       </div>
-    </div>
-  </footer>
-</body>
+
+      <mat-divider></mat-divider>
+
+      <h2 matSubheader>Páginas</h2>
+
+      <a mat-list-item routerLink="/admin/products" routerLinkActive="list-item-active">
+        <mat-icon>dashboard</mat-icon>
+        &nbsp; Dashboard
+      </a>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <mat-drawer-content class="background">
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+
+</mat-drawer-container>

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Product } from '../../models/products.model';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/';
 
 @Component({
   selector: 'app-product-form',
@@ -16,11 +17,13 @@ export class ProductFormPage implements OnInit {
   form: FormGroup;
   editMode = false;
   product: Product;
+  selectedImage: File;
 
   constructor(
     private productService: ProductsService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -42,7 +45,7 @@ export class ProductFormPage implements OnInit {
     this.form = new FormGroup({
       barcode: new FormControl(this.product ? this.product.barcode : null, {
         updateOn: 'change',
-        validators: [Validators.required, Validators.pattern('^(0|[1-9][0-9]*)$'), Validators.minLength(13)]
+        validators: [Validators.required, Validators.pattern('^(0|[0-9][0-9]*)$'), Validators.minLength(13)]
       }),
       description: new FormControl(this.product ? this.product.description : null, {
         updateOn: 'change',
@@ -52,7 +55,15 @@ export class ProductFormPage implements OnInit {
         updateOn: 'change',
         validators: [Validators.required, Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')]
       }),
+      image: new FormControl(null, {
+        updateOn: 'change',
+        validators: this.product ? [] : [Validators.required]
+      })
     });
+  }
+
+  onFileChanged(event: Event) {
+    this.selectedImage = (event.target as HTMLInputElement).files[0];
   }
 
   submit() {
@@ -65,9 +76,24 @@ export class ProductFormPage implements OnInit {
       ...this.form.value
     };
 
-    this.productService.addProduct(value).subscribe(() => {
+    this.productService.addProduct(value, this.selectedImage).subscribe(product => {
       this.router.navigate(['/admin', 'products']);
+
+      if (!this.editMode) {
+        this.openSnackBar('Added successfully', 'Undo', product);
+      }
+
     });
+  }
+
+
+  openSnackBar(message: string, action: string, product: Product) {
+    const snackBarRef = this.snackBar.open(message, action, { duration: 4000 });
+
+    snackBarRef.onAction().subscribe(() => {
+      this.productService.deleteProduct(product.id).subscribe();
+    });
+
   }
 
 }

@@ -1,42 +1,72 @@
-<div class="row">
-  <div class="col s12 m12">
-    <div *ngIf="form" class="card">
-      <div  class="card-content">
-        <span class="card-title">{{ editMode ? 'Edit' : 'New' }} Product</span>
-        <form [formGroup]="form">
-          <div class="row">
-            <div class="input-field col s12">
-              <input type="text" id="barcode" formControlName="barcode">
-              <label for="barcode" [class.active]="form.get('barcode').value !== null">Barcode</label>
-              <small class="red-text" *ngIf="form.get('barcode').invalid && form.get('barcode').touched " >
-                Field is not a valid barcode
-              </small>
-            </div>
-            <div class="input-field col s12">
-              <input type="text" id="descrition" formControlName="description">
-              <label for="descrition" [class.active]="form.get('description').value !== null">Description</label>
-              <small class="red-text" *ngIf="form.get('description').invalid && form.get('description').touched " >
-                Invalid Field
-              </small>
-            </div>
-            <div class="input-field col s12">
-              <input type="text" id="price" formControlName="price">
-              <label for="price" [class.active]="form.get('price').value !== null">Price</label>
-              <small class="red-text" *ngIf="form.get('price').invalid && form.get('price').touched " >
-                This field is not a valid price
-              </small>
-            </div>
+<div class="page-header">
+
+</div>
+<div class="page-content">
+  <mat-card *ngIf="form">
+    <mat-card-header>
+      <h1>{{ editMode ? 'Edit' : 'New' }} Product</h1>
+    </mat-card-header>
+    <form [formGroup]="form">
+      <div class="d-flex flex-column form-style">
+        <div class="form-group">
+          <div class="d-flex align-items-center">
+            <label for="description">
+              <mat-icon class="form-icon">shopping_cart</mat-icon>
+            </label>
+            <input class="input-form" type="text" id="description" placeholder="Description"
+              formControlName="description">
           </div>
-        </form>
-      </div>
-      <div class="card-action d-flex justify-content-flex-end">
-        <div class="p-1">
-          <button class="btn waves-effect" [routerLink]="['/admin' ,'products']">Cancel</button>
+          <small *ngIf="form.get('description').invalid && form.get('description').touched">Invalid Field</small>
         </div>
-        <div class="p-1">
-          <button class="btn waves-effect green" (click)="submit()" [disabled]="form.invalid">{{ editMode ? 'Save Changes' : 'Add Product'}}</button>
+        <div class="form-group">
+          <div class="d-flex align-items-center">
+            <label for="barcode">
+              <mat-icon>view_headline</mat-icon>
+            </label>
+            <input class="input-form" type="text" id="barcode" placeholder="Barcode" formControlName="barcode">
+          </div>
+          <small *ngIf="form.get('barcode').invalid && form.get('barcode').touched">Invalid Field</small>
+        </div>
+        <div class="form-group">
+          <div class="d-flex align-items-center">
+            <label for="price">
+              <mat-icon>attach_money</mat-icon>
+            </label>
+            <input class="input-form" type="text" id="price" placeholder="Price" formControlName="price">
+          </div>
+          <small *ngIf="form.get('price').invalid && form.get('price').touched">Invalid Field</small>
+        </div>
+        <div class="form-group">
+          <div class="d-flex align-items-center">
+            <input class="input-form" (change)="onFileChanged($event)" type="file" id="image" placeholder="image" formControlName="image">
+          </div>
+          <small *ngIf="form.get('price').invalid && form.get('price').touched">Invalid Field</small>
+        </div>
+        <div class="form-group">
+          <img [src]="'http://localhost:8080/images/' + product.imageUrl" alt="Product Image">
         </div>
       </div>
-    </div>
-  </div>
+    </form>
+    <mat-card-actions>
+      <div class="d-flex justify-content-flex-end">
+        <div class="p-2">
+          <button class="cancel-button" [routerLink]="['/admin', 'products']" mat-button>
+          <mat-icon>cancel</mat-icon>&nbsp; Cancel
+          </button>
+        </div>
+        <div class="p-2" *ngIf="editMode; else elseBlock">
+          <button mat-strocked-button class="save-button" [class.invalidSaveChanges]="form.invalid" (click)="submit()" [disabled]="form.invalid" mat-button>
+            <mat-icon>save</mat-icon>&nbsp; Save Changes
+          </button>
+        </div>
+        <ng-template #elseBlock>
+          <div class="p-2">
+            <button  class="add-button" [class.invalidAdd]="form.invalid" (click)="submit()" [disabled]="form.invalid" mat-button>
+              <mat-icon>add</mat-icon>&nbsp; Add
+            </button>
+          </div>
+        </ng-template>
+      </div>
+    </mat-card-actions>
+  </mat-card>
 </div>

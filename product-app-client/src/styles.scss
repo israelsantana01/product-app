@@ -1,39 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
-html, body {
-  background: url('assets/img/e-comerce.jpg') center;
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+html,
+body {
   height: 100%;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.dataTables_length {
-  label {
-    select {
-      display: initial;
-      width: auto;
-    }
-  }
-}
+// *, ::after, ::before {
+//   box-sizing: border-box;
+// }
 
-.dataTables_filter {
-  label {
-    input {
-      width: auto !important;
-      padding-left: 10px !important;
-    }
-  }
+table {
+  width: 100%;
 }
 
 .d-flex {
   display: flex !important;
 }
 
-.p-2 {
-  padding: .5rem !important;
-}
-
 .flex-row {
   flex-direction: row !important;
+}
+
+.flex-column {
+  flex-direction: column !important;
+}
+
+@media(min-width: 768px) {
+  .flex-md-row {
+    flex-direction: row !important;
+  }
 }
 
 .justify-content-flex-start {
@@ -44,12 +41,67 @@ html, body {
   justify-content: flex-end !important;
 }
 
-.w-100 {
-  width: 100%;
-}
-
 .justify-content-between {
   justify-content: space-between !important;
 }
 
+.align-items-center {
+  align-items: center !important;
+}
 
+.w-100 {
+  width: 100%;
+}
+
+.p-2 {
+  padding: 0.5rem !important;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.page-header {
+  background-color:#5c8c3c;
+  padding-top: 2em;
+  padding-bottom: 8em;
+
+  .title {
+    color: white;
+    padding: 1em;
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  .search-wrapper {
+    padding: 0 1.6em;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 5em;
+
+    mat-icon {
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    input {
+      padding: 1em;
+      width: 100%;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+
+  }
+
+  .actions {
+    padding: 1em;
+  }
+}
+
+.page-content {
+  margin-top: -6em;
+  padding: 1em;
+}

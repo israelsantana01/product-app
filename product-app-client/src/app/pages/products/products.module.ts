@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ProductsPage } from './products.page';
 
 import { DataTablesModule } from 'angular-datatables';
+import { SharedModule } from 'src/app/shared.module';
 
 const routes: Routes = [
   {
@@ -25,7 +26,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    DataTablesModule
+    DataTablesModule,
+    SharedModule
   ]
 })
 export class ProductsModule { }
