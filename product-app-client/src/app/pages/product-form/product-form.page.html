@@ -38,12 +38,13 @@
         </div>
         <div class="form-group">
           <div class="d-flex align-items-center">
-            <input class="input-form" (change)="onFileChanged($event)" type="file" id="image" placeholder="image" formControlName="image">
+            <input class="input-form" (change)="onFileChanged($event)" type="file" id="image" placeholder="image"
+              formControlName="image">
           </div>
-          <small *ngIf="form.get('price').invalid && form.get('price').touched">Invalid Field</small>
+          <small *ngIf="form.get('image').invalid && form.get('image').touched">Invalid Field</small>
         </div>
         <div class="form-group">
-          <img [src]="'http://localhost:8080/images/' + product.imageUrl" alt="Product Image">
+          <img class="image-product" [src]="'http://localhost:8080/images/' + product.imageUrl" alt="Product Image">
         </div>
       </div>
     </form>
@@ -51,17 +52,19 @@
       <div class="d-flex justify-content-flex-end">
         <div class="p-2">
           <button class="cancel-button" [routerLink]="['/admin', 'products']" mat-button>
-          <mat-icon>cancel</mat-icon>&nbsp; Cancel
+            <mat-icon>cancel</mat-icon>&nbsp; Cancel
           </button>
         </div>
         <div class="p-2" *ngIf="editMode; else elseBlock">
-          <button mat-strocked-button class="save-button" [class.invalidSaveChanges]="form.invalid" (click)="submit()" [disabled]="form.invalid" mat-button>
+          <button mat-strocked-button class="save-button" [class.invalidSaveChanges]="form.invalid" (click)="submit()"
+            [disabled]="form.invalid" mat-button>
             <mat-icon>save</mat-icon>&nbsp; Save Changes
           </button>
         </div>
         <ng-template #elseBlock>
           <div class="p-2">
-            <button  class="add-button" [class.invalidAdd]="form.invalid" (click)="submit()" [disabled]="form.invalid" mat-button>
+            <button class="add-button" [class.invalidAdd]="form.invalid" (click)="submit()" [disabled]="form.invalid"
+              mat-button>
               <mat-icon>add</mat-icon>&nbsp; Add
             </button>
           </div>

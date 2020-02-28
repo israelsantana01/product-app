@@ -73,8 +73,11 @@ export class ProductFormPage implements OnInit {
 
     const value: Product = {
       id: this.product ? this.product.id : null,
+      imageUrl: this.product ? this.product.imageUrl : null,
       ...this.form.value
     };
+
+    console.log(value);
 
     this.productService.addProduct(value, this.selectedImage).subscribe(product => {
       this.router.navigate(['/admin', 'products']);

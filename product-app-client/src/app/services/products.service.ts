@@ -39,10 +39,17 @@ export class ProductsService {
 
       observable = observable.pipe(
         switchMap(() => {
-
-          if (!product.imageUrl) {
-            product.imageUrl = this.randomStr();
+          if (product.imageUrl) {
+            return this.http.delete(`http://localhost:8080/images/${product.imageUrl}`);
+          } else {
+            return of({});
           }
+        }),
+        switchMap(() => {
+
+          
+            product.imageUrl = this.randomStr();
+          
 
           const formData: FormData = new FormData();
           formData.append('pid', product.imageUrl);
