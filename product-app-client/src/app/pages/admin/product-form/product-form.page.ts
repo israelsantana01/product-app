@@ -1,8 +1,8 @@
-import { ProductsService } from '../../services/products.service';
+import { ProductsService } from '../../../services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Product } from '../../models/products.model';
+import { Product } from '../../../models/products.model';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/';
 
 @Component({

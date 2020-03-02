@@ -20,11 +20,11 @@ export class ProductsService {
 
   fetchProducts(): Observable<any> {
     return this.http.get<Product[]>(this.baseUrl)
-    .pipe(
-      tap(products => {
-        this.mProducts.next(products);
-      })
-    );
+      .pipe(
+        tap(products => {
+          this.mProducts.next(products);
+        })
+      );
   }
 
   getProduct(id: string): Observable<Product> {
@@ -36,7 +36,6 @@ export class ProductsService {
     let observable = of({});
 
     if (selectedImage) {
-
       observable = observable.pipe(
         switchMap(() => {
           if (product.imageUrl) {
@@ -46,10 +45,7 @@ export class ProductsService {
           }
         }),
         switchMap(() => {
-
-          
-            product.imageUrl = this.randomStr();
-          
+          product.imageUrl = this.randomStr();
 
           const formData: FormData = new FormData();
           formData.append('pid', product.imageUrl);
@@ -71,16 +67,16 @@ export class ProductsService {
 
   deleteProduct(id: number): Observable<any> {
     return this.http.delete<Product>(`${this.baseUrl}/${id}`)
-    .pipe(
-      switchMap(() => {
-        return this.products;
-      }),
-      take(1),
-      tap(products => {
-        const newProducts = products.filter(product => product.id !== id);
-        this.mProducts.next(newProducts);
-      })
-    );
+      .pipe(
+        switchMap(() => {
+          return this.products;
+        }),
+        take(1),
+        tap(products => {
+          const newProducts = products.filter(product => product.id !== id);
+          this.mProducts.next(newProducts);
+        })
+      );
   }
 
   private randomStr() {

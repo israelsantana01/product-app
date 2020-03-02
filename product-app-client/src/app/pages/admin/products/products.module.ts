@@ -13,11 +13,11 @@ const routes: Routes = [
   },
   {
     path: 'new',
-    loadChildren: '../product-form/product-from.module#ProductFormModule'
+    loadChildren: () => import ('../product-form/product-form.module').then(m => m.ProductFormPageModule)
   },
   {
     path: ':id',
-    loadChildren: '../product-form/product-from.module#ProductFormModule'
+    loadChildren: () => import ('../product-form/product-form.module').then(m => m.ProductFormPageModule)
   }
 ];
 
@@ -30,4 +30,4 @@ const routes: Routes = [
     SharedModule
   ]
 })
-export class ProductsModule { }
+export class ProductsPageModule { }

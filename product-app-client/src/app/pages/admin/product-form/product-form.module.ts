@@ -21,4 +21,4 @@ const routes: Routes = [
     SharedModule
   ],
 })
-export class ProductFormModule { }
+export class ProductFormPageModule { }

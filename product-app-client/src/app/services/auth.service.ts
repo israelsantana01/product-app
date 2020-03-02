@@ -5,7 +5,7 @@ import { User } from 'src/app/models/auth.model';
 
 export class AuthService {
 
-  private mAuthenticated = true;
+  private mAuthenticated = false;
 
   get authenticated() {
     return this.mAuthenticated;

@@ -1,11 +1,12 @@
-import { AuthService } from './../../services/auth.service';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { ProductsService } from '../../services/products.service';
-import { Product } from '../../models/products.model';
+
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Subscription } from 'rxjs';
+import { Product } from 'src/app/models/products.model';
+import { ProductsService } from 'src/app/services/products.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-products',
