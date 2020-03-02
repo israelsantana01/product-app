@@ -1,12 +1,23 @@
-<mat-toolbar *ngIf="authService.authenticated" color="primary">
+<mat-toolbar color="primary">
   <mat-toolbar-row>
-    <div>
+    <div *ngIf="!authService; else elseBlock">
       <button mat-icon-button (click)="toggleSidebar()">
         <mat-icon>menu</mat-icon>
       </button>
     </div>
+    <ng-template #elseBlock>
+      <img src="../assets/img/shop.svg" width="40px" height="50px">
+    </ng-template>
 
-    <span class="title">iShop</span>
+    <span class="title" routerLink="/">iShop</span>
+
+    <div class="d-flex w-100 justify-content-flex-end" *ngIf="!authService.authenticated">
+      <ul>
+        <li>
+          <button routerLink="/auth" mat-button>Console</button>
+        </li>
+      </ul>
+    </div>
 
     <div class="d-flex w-100 justify-content-flex-end" *ngIf="authService.authenticated">
       <ul class="d-flex">
@@ -27,7 +38,7 @@
 </mat-toolbar>
 
 <mat-drawer-container>
-  <mat-drawer *ngIf="authService.authenticated"  [mode]="mode" [opened]="sidebarOpen">
+  <mat-drawer *ngIf="authService.authenticated" [mode]="mode" [opened]="sidebarOpen">
     <mat-nav-list id="card-top">
       <div class="profile-card">
 
