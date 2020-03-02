@@ -1,1 +1,17 @@
-works
+<div class="container-explorer d-flex">
+    <div class="section w-50" *ngFor="let section of sections">
+        <div class="card" *ngFor="let product of section">
+            <mat-card>
+                <img [src]="'http://localhost:8080/images/' + product?.imageUrl" height="500px">
+                <mat-card-content>
+                    <span class="card-title">{{ product.description }}</span>
+                    <p>R$ {{ product.price }}</p>
+                </mat-card-content>
+                <mat-divider></mat-divider>
+                <mat-card-actions>
+                    <button class="button-explore" mat-button>Add to Cart</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

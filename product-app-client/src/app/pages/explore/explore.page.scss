@@ -1,0 +1,22 @@
+:host {
+    background-image: url(../../../assets/img/e-comerce.jpg);
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    background-repeat: repeat;
+    height: 100%;
+}
+.section {
+    mat-card {
+        margin: 1em;
+        width: 460px;
+        img {
+           width: 100%;   
+        }
+        .button-explore {
+            color: coral;
+            background-color: #7080902b;
+        }
+    }
+}

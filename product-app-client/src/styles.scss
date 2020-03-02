@@ -45,12 +45,20 @@ table {
   justify-content: space-between !important;
 }
 
+.justify-content-around {
+  justify-content: space-around !important;
+}
+
 .align-items-center {
   align-items: center !important;
 }
 
 .w-100 {
   width: 100%;
+}
+
+w-50 {
+  width: 50%;
 }
 
 .p-2 {

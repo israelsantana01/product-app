@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { ExplorePage } from './explore.page';
+import { SharedModule } from 'src/app/shared.module';
 
 const routes: Routes = [
     {
@@ -16,7 +17,8 @@ const routes: Routes = [
     ],
     imports: [
         CommonModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+        SharedModule
     ],
     exports: [
         
