@@ -1,8 +1,8 @@
-<div class="container-explorer d-flex">
-    <div class="section w-50" *ngFor="let section of sections">
+<div class="container-explorer d-flex flex-wrap">
+    <div class="d-flex align-items-center flex-column section w-100 w-md-50" *ngFor="let section of sections">
         <div class="card" *ngFor="let product of section">
             <mat-card>
-                <img [src]="'http://localhost:8080/images/' + product?.imageUrl" height="500px">
+                <img [src]="'http://localhost:8080/images/' + product?.imageUrl" >
                 <mat-card-content>
                     <span class="card-title">{{ product.description }}</span>
                     <p>R$ {{ product.price }}</p>

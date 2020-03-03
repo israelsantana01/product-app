@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () => import ('../app/pages/auth/auth.module').then(m => AuthPageModule)
+    loadChildren: () => import ('../app/pages/auth/auth.module').then(m => m.AuthPageModule)
   },
   {
     path: 'explore',

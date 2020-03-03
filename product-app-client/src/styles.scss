@@ -23,6 +23,10 @@ table {
   flex-direction: row !important;
 }
 
+.flex-wrap {
+  flex-wrap: wrap !important;
+} 
+
 .flex-column {
   flex-direction: column !important;
 }
@@ -60,6 +64,13 @@ table {
 w-50 {
   width: 50%;
 }
+
+@media (min-width: 758px) {
+  .w-md-50 {
+    width: 50%;
+  }
+}
+
 
 .p-2 {
   padding: 0.5rem !important;

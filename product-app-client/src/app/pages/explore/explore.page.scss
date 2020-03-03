@@ -6,17 +6,21 @@
     justify-content: center; 
     background-repeat: repeat;
     height: 100%;
+    overflow-y: auto;
 }
-.section {
-    mat-card {
-        margin: 1em;
-        width: 460px;
-        img {
-           width: 100%;   
-        }
-        .button-explore {
-            color: coral;
-            background-color: #7080902b;
-        }
+.container-explorer {
+    margin-top: 6em;
+    .section {
+        mat-card {
+            margin: 0.5em 1em;
+            img {
+                width: 250px;
+                height: auto;   
+            }
+            .button-explore {
+                color: coral;
+                background-color: #7080902b;
+            }
+        }   
     }
 }
